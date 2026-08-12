@@ -1,0 +1,142 @@
+[
+  {
+    "id": "PRD-001",
+    "name": "Klawiatura mechaniczna",
+    "category": "Elektronika",
+    "price": 329.90,
+    "available": true
+  },
+  {
+    "id": "PRD-002",
+    "name": "Mysz bezprzewodowa",
+    "category": "Elektronika",
+    "price": 149.00,
+    "available": true
+  },
+  {
+    "id": "PRD-003",
+    "name": "Monitor 27 cali",
+    "category": "Elektronika",
+    "price": 1299.00,
+    "available": true
+  },
+  {
+    "id": "PRD-004",
+    "name": "Słuchawki nauszne",
+    "category": "Elektronika",
+    "price": 279.50,
+    "available": true
+  },
+  {
+    "id": "PRD-005",
+    "name": "Kamera internetowa",
+    "category": "Elektronika",
+    "price": 239.00,
+    "available": false
+  },
+  {
+    "id": "PRD-006",
+    "name": "Lampka biurkowa LED",
+    "category": "Dom i biuro",
+    "price": 119.90,
+    "available": true
+  },
+  {
+    "id": "PRD-007",
+    "name": "Podstawka pod laptop",
+    "category": "Dom i biuro",
+    "price": 89.00,
+    "available": true
+  },
+  {
+    "id": "PRD-008",
+    "name": "Krzesło ergonomiczne",
+    "category": "Dom i biuro",
+    "price": 899.00,
+    "available": true
+  },
+  {
+    "id": "PRD-009",
+    "name": "Termos stalowy 750 ml",
+    "category": "Dom i biuro",
+    "price": 79.90,
+    "available": true
+  },
+  {
+    "id": "PRD-010",
+    "name": "Organizer na dokumenty",
+    "category": "Dom i biuro",
+    "price": 54.50,
+    "available": true
+  },
+  {
+    "id": "PRD-011",
+    "name": "Plecak miejski 22 l",
+    "category": "Akcesoria",
+    "price": 189.00,
+    "available": true
+  },
+  {
+    "id": "PRD-012",
+    "name": "Torba na laptop 15 cali",
+    "category": "Akcesoria",
+    "price": 139.90,
+    "available": true
+  },
+  {
+    "id": "PRD-013",
+    "name": "Butelka filtrująca",
+    "category": "Akcesoria",
+    "price": 64.00,
+    "available": false
+  },
+  {
+    "id": "PRD-014",
+    "name": "Mata do ćwiczeń",
+    "category": "Sport",
+    "price": 99.00,
+    "available": true
+  },
+  {
+    "id": "PRD-015",
+    "name": "Zestaw gum oporowych",
+    "category": "Sport",
+    "price": 69.90,
+    "available": true
+  },
+  {
+    "id": "PRD-016",
+    "name": "Piłka treningowa",
+    "category": "Sport",
+    "price": 84.50,
+    "available": true
+  },
+  {
+    "id": "PRD-017",
+    "name": "Notes w twardej oprawie",
+    "category": "Papiernicze",
+    "price": 32.90,
+    "available": true
+  },
+  {
+    "id": "PRD-018",
+    "name": "Pióro wieczne",
+    "category": "Papiernicze",
+    "price": 129.00,
+    "available": true
+  },
+  {
+    "id": "PRD-019",
+    "name": "Planer tygodniowy",
+    "category": "Papiernicze",
+    "price": 44.90,
+    "available": true
+  },
+  {
+    "id": "PRD-020",
+    "name": "Kalkulator biurowy",
+    "category": "Papiernicze",
+    "price": 58.00,
+    "available": true
+  }
+]
