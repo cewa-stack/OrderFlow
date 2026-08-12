@@ -1,0 +1,92 @@
+[
+  {
+    "id": "CUS-001",
+    "first_name": "Anna",
+    "last_name": "Kowalska",
+    "email": "anna.kowalska@example.com"
+  },
+  {
+    "id": "CUS-002",
+    "first_name": "Marek",
+    "last_name": "Nowak",
+    "email": "marek.nowak@example.com"
+  },
+  {
+    "id": "CUS-003",
+    "first_name": "Julia",
+    "last_name": "Wiśniewska",
+    "email": "julia.wisniewska@example.com"
+  },
+  {
+    "id": "CUS-004",
+    "first_name": "Piotr",
+    "last_name": "Wójcik",
+    "email": "piotr.wojcik@example.com"
+  },
+  {
+    "id": "CUS-005",
+    "first_name": "Katarzyna",
+    "last_name": "Kamińska",
+    "email": "katarzyna.kaminska@example.com"
+  },
+  {
+    "id": "CUS-006",
+    "first_name": "Tomasz",
+    "last_name": "Lewandowski",
+    "email": "tomasz.lewandowski@example.com"
+  },
+  {
+    "id": "CUS-007",
+    "first_name": "Magdalena",
+    "last_name": "Zielińska",
+    "email": "magdalena.zielinska@example.com"
+  },
+  {
+    "id": "CUS-008",
+    "first_name": "Paweł",
+    "last_name": "Szymański",
+    "email": "pawel.szymanski@example.com"
+  },
+  {
+    "id": "CUS-009",
+    "first_name": "Agnieszka",
+    "last_name": "Woźniak",
+    "email": "agnieszka.wozniak@example.com"
+  },
+  {
+    "id": "CUS-010",
+    "first_name": "Jakub",
+    "last_name": "Dąbrowski",
+    "email": "jakub.dabrowski@example.com"
+  },
+  {
+    "id": "CUS-011",
+    "first_name": "Natalia",
+    "last_name": "Kozłowska",
+    "email": "natalia.kozlowska@example.com"
+  },
+  {
+    "id": "CUS-012",
+    "first_name": "Michał",
+    "last_name": "Jankowski",
+    "email": "michal.jankowski@example.com"
+  },
+  {
+    "id": "CUS-013",
+    "first_name": "Karolina",
+    "last_name": "Mazur",
+    "email": "karolina.mazur@example.com"
+  },
+  {
+    "id": "CUS-014",
+    "first_name": "Łukasz",
+    "last_name": "Krawczyk",
+    "email": "lukasz.krawczyk@example.com"
+  },
+  {
+    "id": "CUS-015",
+    "first_name": "Ewa",
+    "last_name": "Piotrowska",
+    "email": "ewa.piotrowska@example.com"
+  }
+]
