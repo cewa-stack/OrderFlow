@@ -1,0 +1,517 @@
+[
+  {
+    "id": "ORD-0001",
+    "customer_id": "CUS-001",
+    "created_at": "2026-05-02T09:15:00",
+    "status": "NEW",
+    "payment_method": "CARD",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-001", "quantity": 1, "unit_price": 329.90},
+      {"product_id": "PRD-017", "quantity": 2, "unit_price": 32.90}
+    ],
+    "total": 395.70
+  },
+  {
+    "id": "ORD-0002",
+    "customer_id": "CUS-002",
+    "created_at": "2026-05-03T14:40:00",
+    "status": "PAID",
+    "payment_method": "TRANSFER",
+    "delivery_method": "PARCEL_LOCKER",
+    "items": [
+      {"product_id": "PRD-003", "quantity": 1, "unit_price": 1299.00}
+    ],
+    "total": 1299.00
+  },
+  {
+    "id": "ORD-0003",
+    "customer_id": "CUS-003",
+    "created_at": "2026-05-05T11:05:00",
+    "status": "PROCESSING",
+    "payment_method": "CASH_ON_DELIVERY",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-011", "quantity": 1, "unit_price": 189.00},
+      {"product_id": "PRD-009", "quantity": 2, "unit_price": 79.90}
+    ],
+    "total": 348.80
+  },
+  {
+    "id": "ORD-0004",
+    "customer_id": "CUS-004",
+    "created_at": "2026-05-07T16:25:00",
+    "status": "SHIPPED",
+    "payment_method": "CARD",
+    "delivery_method": "PICKUP_POINT",
+    "items": [
+      {"product_id": "PRD-008", "quantity": 1, "unit_price": 899.00},
+      {"product_id": "PRD-006", "quantity": 1, "unit_price": 119.90}
+    ],
+    "total": 1018.90
+  },
+  {
+    "id": "ORD-0005",
+    "customer_id": "CUS-005",
+    "created_at": "2026-05-08T10:10:00",
+    "status": "DELIVERED",
+    "payment_method": "TRANSFER",
+    "delivery_method": "STORE_PICKUP",
+    "items": [
+      {"product_id": "PRD-014", "quantity": 2, "unit_price": 99.00},
+      {"product_id": "PRD-015", "quantity": 1, "unit_price": 69.90}
+    ],
+    "total": 267.90
+  },
+  {
+    "id": "ORD-0006",
+    "customer_id": "CUS-006",
+    "created_at": "2026-05-10T12:30:00",
+    "status": "CANCELLED",
+    "payment_method": "CARD",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-005", "quantity": 1, "unit_price": 239.00},
+      {"product_id": "PRD-002", "quantity": 1, "unit_price": 149.00}
+    ],
+    "total": 388.00
+  },
+  {
+    "id": "ORD-0007",
+    "customer_id": "CUS-007",
+    "created_at": "2026-05-12T18:05:00",
+    "status": "DELIVERED",
+    "payment_method": "CASH_ON_DELIVERY",
+    "delivery_method": "PARCEL_LOCKER",
+    "items": [
+      {"product_id": "PRD-012", "quantity": 1, "unit_price": 139.90},
+      {"product_id": "PRD-018", "quantity": 1, "unit_price": 129.00}
+    ],
+    "total": 268.90
+  },
+  {
+    "id": "ORD-0008",
+    "customer_id": "CUS-008",
+    "created_at": "2026-05-15T08:45:00",
+    "status": "SHIPPED",
+    "payment_method": "CARD",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-004", "quantity": 1, "unit_price": 279.50}
+    ],
+    "total": 279.50
+  },
+  {
+    "id": "ORD-0009",
+    "customer_id": "CUS-009",
+    "created_at": "2026-05-18T15:20:00",
+    "status": "PROCESSING",
+    "payment_method": "TRANSFER",
+    "delivery_method": "PICKUP_POINT",
+    "items": [
+      {"product_id": "PRD-006", "quantity": 1, "unit_price": 119.90},
+      {"product_id": "PRD-010", "quantity": 3, "unit_price": 54.50}
+    ],
+    "total": 283.40
+  },
+  {
+    "id": "ORD-0010",
+    "customer_id": "CUS-010",
+    "created_at": "2026-05-20T13:55:00",
+    "status": "PAID",
+    "payment_method": "CARD",
+    "delivery_method": "PARCEL_LOCKER",
+    "items": [
+      {"product_id": "PRD-002", "quantity": 2, "unit_price": 149.00},
+      {"product_id": "PRD-007", "quantity": 1, "unit_price": 89.00}
+    ],
+    "total": 387.00
+  },
+  {
+    "id": "ORD-0011",
+    "customer_id": "CUS-011",
+    "created_at": "2026-05-23T09:35:00",
+    "status": "NEW",
+    "payment_method": "CASH_ON_DELIVERY",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-016", "quantity": 1, "unit_price": 84.50},
+      {"product_id": "PRD-017", "quantity": 1, "unit_price": 32.90}
+    ],
+    "total": 117.40
+  },
+  {
+    "id": "ORD-0012",
+    "customer_id": "CUS-012",
+    "created_at": "2026-05-26T17:10:00",
+    "status": "DELIVERED",
+    "payment_method": "TRANSFER",
+    "delivery_method": "STORE_PICKUP",
+    "items": [
+      {"product_id": "PRD-003", "quantity": 1, "unit_price": 1299.00},
+      {"product_id": "PRD-002", "quantity": 1, "unit_price": 149.00}
+    ],
+    "total": 1448.00
+  },
+  {
+    "id": "ORD-0013",
+    "customer_id": "CUS-013",
+    "created_at": "2026-06-01T10:25:00",
+    "status": "CANCELLED",
+    "payment_method": "CARD",
+    "delivery_method": "PICKUP_POINT",
+    "items": [
+      {"product_id": "PRD-013", "quantity": 2, "unit_price": 64.00},
+      {"product_id": "PRD-019", "quantity": 1, "unit_price": 44.90}
+    ],
+    "total": 172.90
+  },
+  {
+    "id": "ORD-0014",
+    "customer_id": "CUS-014",
+    "created_at": "2026-06-03T14:05:00",
+    "status": "DELIVERED",
+    "payment_method": "CARD",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-001", "quantity": 1, "unit_price": 329.90},
+      {"product_id": "PRD-012", "quantity": 1, "unit_price": 139.90}
+    ],
+    "total": 469.80
+  },
+  {
+    "id": "ORD-0015",
+    "customer_id": "CUS-015",
+    "created_at": "2026-06-05T11:50:00",
+    "status": "SHIPPED",
+    "payment_method": "TRANSFER",
+    "delivery_method": "PARCEL_LOCKER",
+    "items": [
+      {"product_id": "PRD-014", "quantity": 1, "unit_price": 99.00},
+      {"product_id": "PRD-016", "quantity": 1, "unit_price": 84.50}
+    ],
+    "total": 183.50
+  },
+  {
+    "id": "ORD-0016",
+    "customer_id": "CUS-001",
+    "created_at": "2026-06-08T16:40:00",
+    "status": "PROCESSING",
+    "payment_method": "CASH_ON_DELIVERY",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-008", "quantity": 1, "unit_price": 899.00}
+    ],
+    "total": 899.00
+  },
+  {
+    "id": "ORD-0017",
+    "customer_id": "CUS-002",
+    "created_at": "2026-06-10T09:20:00",
+    "status": "PAID",
+    "payment_method": "CARD",
+    "delivery_method": "PICKUP_POINT",
+    "items": [
+      {"product_id": "PRD-018", "quantity": 1, "unit_price": 129.00},
+      {"product_id": "PRD-017", "quantity": 2, "unit_price": 32.90}
+    ],
+    "total": 194.80
+  },
+  {
+    "id": "ORD-0018",
+    "customer_id": "CUS-003",
+    "created_at": "2026-06-12T12:15:00",
+    "status": "NEW",
+    "payment_method": "TRANSFER",
+    "delivery_method": "STORE_PICKUP",
+    "items": [
+      {"product_id": "PRD-020", "quantity": 1, "unit_price": 58.00},
+      {"product_id": "PRD-019", "quantity": 1, "unit_price": 44.90}
+    ],
+    "total": 102.90
+  },
+  {
+    "id": "ORD-0019",
+    "customer_id": "CUS-004",
+    "created_at": "2026-06-15T18:30:00",
+    "status": "DELIVERED",
+    "payment_method": "CARD",
+    "delivery_method": "PARCEL_LOCKER",
+    "items": [
+      {"product_id": "PRD-011", "quantity": 1, "unit_price": 189.00},
+      {"product_id": "PRD-009", "quantity": 1, "unit_price": 79.90}
+    ],
+    "total": 268.90
+  },
+  {
+    "id": "ORD-0020",
+    "customer_id": "CUS-005",
+    "created_at": "2026-06-18T08:10:00",
+    "status": "CANCELLED",
+    "payment_method": "CASH_ON_DELIVERY",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-004", "quantity": 1, "unit_price": 279.50}
+    ],
+    "total": 279.50
+  },
+  {
+    "id": "ORD-0021",
+    "customer_id": "CUS-006",
+    "created_at": "2026-06-20T13:45:00",
+    "status": "SHIPPED",
+    "payment_method": "TRANSFER",
+    "delivery_method": "PICKUP_POINT",
+    "items": [
+      {"product_id": "PRD-006", "quantity": 2, "unit_price": 119.90},
+      {"product_id": "PRD-010", "quantity": 1, "unit_price": 54.50}
+    ],
+    "total": 294.30
+  },
+  {
+    "id": "ORD-0022",
+    "customer_id": "CUS-007",
+    "created_at": "2026-06-23T15:05:00",
+    "status": "PROCESSING",
+    "payment_method": "CARD",
+    "delivery_method": "PARCEL_LOCKER",
+    "items": [
+      {"product_id": "PRD-002", "quantity": 1, "unit_price": 149.00},
+      {"product_id": "PRD-015", "quantity": 2, "unit_price": 69.90}
+    ],
+    "total": 288.80
+  },
+  {
+    "id": "ORD-0023",
+    "customer_id": "CUS-008",
+    "created_at": "2026-06-25T10:55:00",
+    "status": "PAID",
+    "payment_method": "CARD",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-003", "quantity": 1, "unit_price": 1299.00},
+      {"product_id": "PRD-007", "quantity": 1, "unit_price": 89.00}
+    ],
+    "total": 1388.00
+  },
+  {
+    "id": "ORD-0024",
+    "customer_id": "CUS-009",
+    "created_at": "2026-06-28T17:20:00",
+    "status": "NEW",
+    "payment_method": "TRANSFER",
+    "delivery_method": "STORE_PICKUP",
+    "items": [
+      {"product_id": "PRD-017", "quantity": 3, "unit_price": 32.90},
+      {"product_id": "PRD-018", "quantity": 1, "unit_price": 129.00}
+    ],
+    "total": 227.70
+  },
+  {
+    "id": "ORD-0025",
+    "customer_id": "CUS-010",
+    "created_at": "2026-07-01T09:40:00",
+    "status": "DELIVERED",
+    "payment_method": "CASH_ON_DELIVERY",
+    "delivery_method": "PICKUP_POINT",
+    "items": [
+      {"product_id": "PRD-014", "quantity": 1, "unit_price": 99.00},
+      {"product_id": "PRD-016", "quantity": 1, "unit_price": 84.50},
+      {"product_id": "PRD-015", "quantity": 1, "unit_price": 69.90}
+    ],
+    "total": 253.40
+  },
+  {
+    "id": "ORD-0026",
+    "customer_id": "CUS-011",
+    "created_at": "2026-07-04T14:10:00",
+    "status": "SHIPPED",
+    "payment_method": "CARD",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-001", "quantity": 1, "unit_price": 329.90},
+      {"product_id": "PRD-002", "quantity": 1, "unit_price": 149.00}
+    ],
+    "total": 478.90
+  },
+  {
+    "id": "ORD-0027",
+    "customer_id": "CUS-012",
+    "created_at": "2026-07-06T11:25:00",
+    "status": "PROCESSING",
+    "payment_method": "TRANSFER",
+    "delivery_method": "PARCEL_LOCKER",
+    "items": [
+      {"product_id": "PRD-012", "quantity": 2, "unit_price": 139.90},
+      {"product_id": "PRD-010", "quantity": 1, "unit_price": 54.50}
+    ],
+    "total": 334.30
+  },
+  {
+    "id": "ORD-0028",
+    "customer_id": "CUS-013",
+    "created_at": "2026-07-09T16:00:00",
+    "status": "PAID",
+    "payment_method": "CARD",
+    "delivery_method": "STORE_PICKUP",
+    "items": [
+      {"product_id": "PRD-019", "quantity": 2, "unit_price": 44.90},
+      {"product_id": "PRD-020", "quantity": 1, "unit_price": 58.00}
+    ],
+    "total": 147.80
+  },
+  {
+    "id": "ORD-0029",
+    "customer_id": "CUS-014",
+    "created_at": "2026-07-12T08:30:00",
+    "status": "NEW",
+    "payment_method": "CASH_ON_DELIVERY",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-009", "quantity": 1, "unit_price": 79.90},
+      {"product_id": "PRD-017", "quantity": 1, "unit_price": 32.90}
+    ],
+    "total": 112.80
+  },
+  {
+    "id": "ORD-0030",
+    "customer_id": "CUS-015",
+    "created_at": "2026-07-14T13:20:00",
+    "status": "CANCELLED",
+    "payment_method": "TRANSFER",
+    "delivery_method": "PICKUP_POINT",
+    "items": [
+      {"product_id": "PRD-005", "quantity": 1, "unit_price": 239.00}
+    ],
+    "total": 239.00
+  },
+  {
+    "id": "ORD-0031",
+    "customer_id": "CUS-001",
+    "created_at": "2026-07-17T18:15:00",
+    "status": "DELIVERED",
+    "payment_method": "CARD",
+    "delivery_method": "PARCEL_LOCKER",
+    "items": [
+      {"product_id": "PRD-004", "quantity": 1, "unit_price": 279.50},
+      {"product_id": "PRD-011", "quantity": 1, "unit_price": 189.00}
+    ],
+    "total": 468.50
+  },
+  {
+    "id": "ORD-0032",
+    "customer_id": "CUS-002",
+    "created_at": "2026-07-20T10:45:00",
+    "status": "SHIPPED",
+    "payment_method": "CASH_ON_DELIVERY",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-008", "quantity": 1, "unit_price": 899.00},
+      {"product_id": "PRD-006", "quantity": 1, "unit_price": 119.90}
+    ],
+    "total": 1018.90
+  },
+  {
+    "id": "ORD-0033",
+    "customer_id": "CUS-003",
+    "created_at": "2026-07-23T15:35:00",
+    "status": "PROCESSING",
+    "payment_method": "TRANSFER",
+    "delivery_method": "STORE_PICKUP",
+    "items": [
+      {"product_id": "PRD-018", "quantity": 1, "unit_price": 129.00},
+      {"product_id": "PRD-019", "quantity": 1, "unit_price": 44.90}
+    ],
+    "total": 173.90
+  },
+  {
+    "id": "ORD-0034",
+    "customer_id": "CUS-004",
+    "created_at": "2026-07-26T09:05:00",
+    "status": "PAID",
+    "payment_method": "CARD",
+    "delivery_method": "PARCEL_LOCKER",
+    "items": [
+      {"product_id": "PRD-002", "quantity": 1, "unit_price": 149.00},
+      {"product_id": "PRD-012", "quantity": 1, "unit_price": 139.90}
+    ],
+    "total": 288.90
+  },
+  {
+    "id": "ORD-0035",
+    "customer_id": "CUS-005",
+    "created_at": "2026-07-29T12:50:00",
+    "status": "NEW",
+    "payment_method": "TRANSFER",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-007", "quantity": 1, "unit_price": 89.00},
+      {"product_id": "PRD-010", "quantity": 1, "unit_price": 54.50}
+    ],
+    "total": 143.50
+  },
+  {
+    "id": "ORD-0036",
+    "customer_id": "CUS-006",
+    "created_at": "2026-08-01T17:30:00",
+    "status": "DELIVERED",
+    "payment_method": "CASH_ON_DELIVERY",
+    "delivery_method": "PICKUP_POINT",
+    "items": [
+      {"product_id": "PRD-014", "quantity": 2, "unit_price": 99.00},
+      {"product_id": "PRD-016", "quantity": 1, "unit_price": 84.50}
+    ],
+    "total": 282.50
+  },
+  {
+    "id": "ORD-0037",
+    "customer_id": "CUS-007",
+    "created_at": "2026-08-04T08:55:00",
+    "status": "SHIPPED",
+    "payment_method": "CARD",
+    "delivery_method": "PARCEL_LOCKER",
+    "items": [
+      {"product_id": "PRD-001", "quantity": 1, "unit_price": 329.90},
+      {"product_id": "PRD-017", "quantity": 1, "unit_price": 32.90}
+    ],
+    "total": 362.80
+  },
+  {
+    "id": "ORD-0038",
+    "customer_id": "CUS-008",
+    "created_at": "2026-08-07T14:25:00",
+    "status": "PROCESSING",
+    "payment_method": "TRANSFER",
+    "delivery_method": "COURIER",
+    "items": [
+      {"product_id": "PRD-003", "quantity": 1, "unit_price": 1299.00}
+    ],
+    "total": 1299.00
+  },
+  {
+    "id": "ORD-0039",
+    "customer_id": "CUS-009",
+    "created_at": "2026-08-10T11:15:00",
+    "status": "PAID",
+    "payment_method": "CARD",
+    "delivery_method": "STORE_PICKUP",
+    "items": [
+      {"product_id": "PRD-011", "quantity": 1, "unit_price": 189.00},
+      {"product_id": "PRD-020", "quantity": 1, "unit_price": 58.00}
+    ],
+    "total": 247.00
+  },
+  {
+    "id": "ORD-0040",
+    "customer_id": "CUS-010",
+    "created_at": "2026-08-14T16:05:00",
+    "status": "NEW",
+    "payment_method": "CASH_ON_DELIVERY",
+    "delivery_method": "PICKUP_POINT",
+    "items": [
+      {"product_id": "PRD-006", "quantity": 1, "unit_price": 119.90},
+      {"product_id": "PRD-019", "quantity": 2, "unit_price": 44.90}
+    ],
+    "total": 209.70
+  }
+]
