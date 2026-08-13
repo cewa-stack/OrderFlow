@@ -1,5 +1,8 @@
 """Punkt wejścia do aplikacji OrderFlow."""
 
+from customers import load_customers
+from orders import display_order_list, load_orders
+
 
 def show_menu():
     print("=" * 40)
@@ -14,6 +17,14 @@ def show_menu():
     print("0. Zakończ")
 
 
+def handle_order_list():
+    """Obsługuje wyświetlanie listy zamówień."""
+    print("\nLISTA ZAMÓWIEŃ")
+    print("=" * 82)
+    display_order_list(load_orders(), load_customers())
+    print()
+
+
 def main():
     while True:
         show_menu()
@@ -23,9 +34,12 @@ def main():
             print("Do zobaczenia.")
             break
 
+        if choice == "1":
+            handle_order_list()
+            continue
+
         print("Ta opcja nie jest jeszcze dostępna.\n")
 
 
 if __name__ == "__main__":
     main()
-
