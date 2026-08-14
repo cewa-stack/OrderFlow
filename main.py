@@ -1,13 +1,24 @@
 """Punkt wejścia do aplikacji OrderFlow."""
 
-from customers import find_customer_by_id, load_customers
+from customers import find_customer_by_id, get_customer_name, load_customers
 from orders import (
+    DELIVERY_METHODS,
+    PAYMENT_METHODS,
+    add_order,
+    build_order_item,
+    create_order,
     display_order_details,
     display_order_list,
     find_order_by_id,
     load_orders,
 )
-from products import load_products
+from products import (
+    display_products,
+    find_product_by_id,
+    format_price,
+    get_available_products,
+    load_products,
+)
 
 
 def show_menu():
@@ -52,6 +63,95 @@ def handle_order_search():
     print()
 
 
+def choose_from_list(label, values):
+    """Pozwala wybrać jedną wartość z krótkiej listy."""
+    print(f"\n{label}:")
+    for number, value in enumerate(values, start=1):
+        print(f"{number}. {value}")
+
+    try:
+        selected_number = int(input("Wybierz numer: "))
+        return values[selected_number - 1]
+    except (ValueError, IndexError):
+        return None
+
+
+def collect_order_items(products):
+    """Pobiera od użytkownika produkty nowego zamówienia."""
+    items = []
+    print("\nDOSTĘPNE PRODUKTY")
+    print("-" * 90)
+    display_products(products, only_available=True)
+    print("\nWpisz ID produktu. Pusta wartość kończy dodawanie.")
+
+    while True:
+        product_id = input("ID produktu: ").strip()
+        if not product_id:
+            return items
+
+        product = find_product_by_id(products, product_id)
+        if product is None or not product["available"]:
+            print("Produkt nie istnieje albo jest niedostępny.")
+            continue
+
+        try:
+            quantity = int(input("Ilość: "))
+        except ValueError:
+            print("Ilość musi być liczbą całkowitą.")
+            continue
+
+        if quantity <= 0:
+            print("Ilość musi być większa od zera.")
+            continue
+
+        items.append(build_order_item(product, quantity))
+        print(f'Dodano: {product["name"]} x {quantity}')
+
+
+def handle_order_creation():
+    """Obsługuje utworzenie i zapis nowego zamówienia."""
+    customers = load_customers()
+    products = load_products()
+    orders = load_orders()
+
+    print("\nNOWE ZAMÓWIENIE")
+    print("=" * 70)
+    for customer in customers:
+        print(f'{customer["id"]:<9} {get_customer_name(customer):<25} {customer["email"]}')
+
+    customer_id = input("\nPodaj ID klienta: ").strip()
+    customer = find_customer_by_id(customers, customer_id)
+    if customer is None:
+        print("Nie znaleziono klienta.\n")
+        return
+
+    available_products = get_available_products(products)
+    items = collect_order_items(available_products)
+    if not items:
+        print("Zamówienie musi zawierać co najmniej jeden produkt.\n")
+        return
+
+    payment_method = choose_from_list("Metoda płatności", PAYMENT_METHODS)
+    if payment_method is None:
+        print("Niepoprawna metoda płatności.\n")
+        return
+
+    delivery_method = choose_from_list("Sposób dostawy", DELIVERY_METHODS)
+    if delivery_method is None:
+        print("Niepoprawny sposób dostawy.\n")
+        return
+
+    order = create_order(
+        orders,
+        customer["id"],
+        items,
+        payment_method,
+        delivery_method,
+    )
+    add_order(orders, order)
+    print(f'\nUtworzono zamówienie {order["id"]} o wartości {format_price(order["total"])}.\n')
+
+
 def main():
     while True:
         show_menu()
@@ -67,6 +167,10 @@ def main():
 
         if choice == "2":
             handle_order_search()
+            continue
+
+        if choice == "3":
+            handle_order_creation()
             continue
 
         print("Ta opcja nie jest jeszcze dostępna.\n")

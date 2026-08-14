@@ -3,6 +3,7 @@
 from customers import get_customer_name
 from products import format_price
 from storage import load_json, save_json
+from time_utils import get_current_datetime
 
 
 ORDERS_FILE = "orders.json"
@@ -54,6 +55,35 @@ def get_next_order_id(orders):
 
     next_number = max(numbers, default=0) + 1
     return f"ORD-{next_number:04d}"
+
+
+def build_order_item(product, quantity):
+    """Buduje pozycję zamówienia na podstawie bieżącej ceny produktu."""
+    return {
+        "product_id": product["id"],
+        "quantity": quantity,
+        "unit_price": product["price"],
+    }
+
+
+def create_order(orders, customer_id, items, payment_method, delivery_method):
+    """Tworzy kompletny rekord nowego zamówienia."""
+    return {
+        "id": get_next_order_id(orders),
+        "customer_id": customer_id,
+        "created_at": get_current_datetime().isoformat(timespec="seconds"),
+        "status": "NEW",
+        "payment_method": payment_method,
+        "delivery_method": delivery_method,
+        "items": items,
+        "total": calculate_order_total(items),
+    }
+
+
+def add_order(orders, order):
+    """Dodaje zamówienie do kolekcji i zapisuje dane."""
+    orders.append(order)
+    save_orders(orders)
 
 
 def sort_orders_by_date(orders, descending=True):
