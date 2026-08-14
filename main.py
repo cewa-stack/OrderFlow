@@ -1,7 +1,13 @@
 """Punkt wejścia do aplikacji OrderFlow."""
 
-from customers import load_customers
-from orders import display_order_list, load_orders
+from customers import find_customer_by_id, load_customers
+from orders import (
+    display_order_details,
+    display_order_list,
+    find_order_by_id,
+    load_orders,
+)
+from products import load_products
 
 
 def show_menu():
@@ -25,6 +31,27 @@ def handle_order_list():
     print()
 
 
+def handle_order_search():
+    """Obsługuje wyszukiwanie i wyświetlanie szczegółów zamówienia."""
+    order_id = input("Podaj ID zamówienia: ").strip()
+    order = find_order_by_id(load_orders(), order_id)
+
+    if order is None:
+        print(f"Nie znaleziono zamówienia o ID {order_id.upper()}.\n")
+        return
+
+    customers = load_customers()
+    customer = find_customer_by_id(customers, order["customer_id"])
+    if customer is None:
+        print("Zamówienie odwołuje się do nieistniejącego klienta.\n")
+        return
+
+    print("\nSZCZEGÓŁY ZAMÓWIENIA")
+    print("=" * 74)
+    display_order_details(order, customer, load_products())
+    print()
+
+
 def main():
     while True:
         show_menu()
@@ -36,6 +63,10 @@ def main():
 
         if choice == "1":
             handle_order_list()
+            continue
+
+        if choice == "2":
+            handle_order_search()
             continue
 
         print("Ta opcja nie jest jeszcze dostępna.\n")
