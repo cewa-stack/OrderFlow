@@ -4,6 +4,7 @@ from customers import get_customer_name
 from products import format_price
 from storage import load_json, save_json
 from time_utils import get_current_datetime
+from validation import require_choice, validate_order_items
 
 
 ORDERS_FILE = "orders.json"
@@ -69,6 +70,9 @@ def build_order_item(product, quantity):
 
 def create_order(orders, customer_id, items, payment_method, delivery_method):
     """Tworzy kompletny rekord nowego zamówienia."""
+    validate_order_items(items)
+    payment_method = require_choice(payment_method, PAYMENT_METHODS, "Metoda płatności")
+    delivery_method = require_choice(delivery_method, DELIVERY_METHODS, "Sposób dostawy")
     return {
         "id": get_next_order_id(orders),
         "customer_id": customer_id,
@@ -89,9 +93,11 @@ def add_order(orders, order):
 
 def change_order_status(order, new_status):
     """Zmienia status na jedną z wartości obsługiwanych przez podstawowy proces."""
-    normalized_status = new_status.strip().upper()
-    if normalized_status not in MANAGEABLE_ORDER_STATUSES:
-        raise ValueError("Niepoprawny status zamówienia.")
+    normalized_status = require_choice(
+        new_status,
+        MANAGEABLE_ORDER_STATUSES,
+        "Status zamówienia",
+    )
     if order["status"] == "CANCELLED":
         raise ValueError("Statusu zamówienia anulowanego nie można zmienić.")
 

@@ -22,6 +22,7 @@ from products import (
     get_available_products,
     load_products,
 )
+from validation import is_valid_identifier, parse_positive_integer
 
 
 def show_menu():
@@ -48,6 +49,10 @@ def handle_order_list():
 def handle_order_search():
     """Obsługuje wyszukiwanie i wyświetlanie szczegółów zamówienia."""
     order_id = input("Podaj ID zamówienia: ").strip()
+    if not is_valid_identifier(order_id, "ORD"):
+        print("ID zamówienia powinno mieć format ORD-0001.\n")
+        return
+
     order = find_order_by_id(load_orders(), order_id)
 
     if order is None:
@@ -72,11 +77,19 @@ def choose_from_list(label, values):
     for number, value in enumerate(values, start=1):
         print(f"{number}. {value}")
 
-    try:
-        selected_number = int(input("Wybierz numer: "))
+    while True:
+        value = input("Wybierz numer (Enter, aby przerwać): ").strip()
+        if not value:
+            return None
+        try:
+            selected_number = parse_positive_integer(value, "Numer opcji")
+        except ValueError as error:
+            print(error)
+            continue
+        if selected_number > len(values):
+            print(f"Wybierz numer od 1 do {len(values)}.")
+            continue
         return values[selected_number - 1]
-    except (ValueError, IndexError):
-        return None
 
 
 def collect_order_items(products):
@@ -92,22 +105,29 @@ def collect_order_items(products):
         if not product_id:
             return items
 
+        if not is_valid_identifier(product_id, "PRD"):
+            print("ID produktu powinno mieć format PRD-001.")
+            continue
+
         product = find_product_by_id(products, product_id)
         if product is None or not product["available"]:
             print("Produkt nie istnieje albo jest niedostępny.")
             continue
 
         try:
-            quantity = int(input("Ilość: "))
-        except ValueError:
-            print("Ilość musi być liczbą całkowitą.")
+            quantity = parse_positive_integer(input("Ilość: "), "Ilość")
+        except ValueError as error:
+            print(error)
             continue
 
-        if quantity <= 0:
-            print("Ilość musi być większa od zera.")
-            continue
-
-        items.append(build_order_item(product, quantity))
+        existing_item = next(
+            (item for item in items if item["product_id"] == product["id"]),
+            None,
+        )
+        if existing_item:
+            existing_item["quantity"] += quantity
+        else:
+            items.append(build_order_item(product, quantity))
         print(f'Dodano: {product["name"]} x {quantity}')
 
 
@@ -123,6 +143,10 @@ def handle_order_creation():
         print(f'{customer["id"]:<9} {get_customer_name(customer):<25} {customer["email"]}')
 
     customer_id = input("\nPodaj ID klienta: ").strip()
+    if not is_valid_identifier(customer_id, "CUS"):
+        print("ID klienta powinno mieć format CUS-001.\n")
+        return
+
     customer = find_customer_by_id(customers, customer_id)
     if customer is None:
         print("Nie znaleziono klienta.\n")
@@ -158,6 +182,10 @@ def handle_order_creation():
 def handle_status_change():
     """Obsługuje podstawową zmianę statusu zamówienia."""
     order_id = input("Podaj ID zamówienia: ").strip()
+    if not is_valid_identifier(order_id, "ORD"):
+        print("ID zamówienia powinno mieć format ORD-0001.\n")
+        return
+
     orders = load_orders()
     order = find_order_by_id(orders, order_id)
 
@@ -182,6 +210,13 @@ def handle_status_change():
 
 
 def main():
+    actions = {
+        "1": handle_order_list,
+        "2": handle_order_search,
+        "3": handle_order_creation,
+        "4": handle_status_change,
+    }
+
     while True:
         show_menu()
         choice = input("Wybierz opcję: ").strip()
@@ -190,23 +225,15 @@ def main():
             print("Do zobaczenia.")
             break
 
-        if choice == "1":
-            handle_order_list()
+        action = actions.get(choice)
+        if action is None:
+            print("Wybierz jedną z dostępnych opcji.\n")
             continue
 
-        if choice == "2":
-            handle_order_search()
-            continue
-
-        if choice == "3":
-            handle_order_creation()
-            continue
-
-        if choice == "4":
-            handle_status_change()
-            continue
-
-        print("Ta opcja nie jest jeszcze dostępna.\n")
+        try:
+            action()
+        except RuntimeError as error:
+            print(f"Błąd danych: {error}\n")
 
 
 if __name__ == "__main__":
