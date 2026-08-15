@@ -3,14 +3,17 @@
 from customers import find_customer_by_id, get_customer_name, load_customers
 from orders import (
     DELIVERY_METHODS,
+    MANAGEABLE_ORDER_STATUSES,
     PAYMENT_METHODS,
     add_order,
     build_order_item,
+    change_order_status,
     create_order,
     display_order_details,
     display_order_list,
     find_order_by_id,
     load_orders,
+    save_orders,
 )
 from products import (
     display_products,
@@ -152,6 +155,32 @@ def handle_order_creation():
     print(f'\nUtworzono zamówienie {order["id"]} o wartości {format_price(order["total"])}.\n')
 
 
+def handle_status_change():
+    """Obsługuje podstawową zmianę statusu zamówienia."""
+    order_id = input("Podaj ID zamówienia: ").strip()
+    orders = load_orders()
+    order = find_order_by_id(orders, order_id)
+
+    if order is None:
+        print("Nie znaleziono zamówienia.\n")
+        return
+
+    print(f'Aktualny status: {order["status"]}')
+    new_status = choose_from_list("Nowy status", MANAGEABLE_ORDER_STATUSES)
+    if new_status is None:
+        print("Niepoprawny wybór statusu.\n")
+        return
+
+    try:
+        change_order_status(order, new_status)
+    except ValueError as error:
+        print(f"{error}\n")
+        return
+
+    save_orders(orders)
+    print(f'Status zamówienia {order["id"]} zmieniono na {new_status}.\n')
+
+
 def main():
     while True:
         show_menu()
@@ -171,6 +200,10 @@ def main():
 
         if choice == "3":
             handle_order_creation()
+            continue
+
+        if choice == "4":
+            handle_status_change()
             continue
 
         print("Ta opcja nie jest jeszcze dostępna.\n")

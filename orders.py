@@ -15,6 +15,7 @@ KNOWN_ORDER_STATUSES = [
     "DELIVERED",
     "CANCELLED",
 ]
+MANAGEABLE_ORDER_STATUSES = ["NEW", "PAID", "PROCESSING", "SHIPPED", "DELIVERED"]
 PAYMENT_METHODS = ["CARD", "TRANSFER", "CASH_ON_DELIVERY"]
 DELIVERY_METHODS = ["COURIER", "PARCEL_LOCKER", "PICKUP_POINT", "STORE_PICKUP"]
 
@@ -84,6 +85,17 @@ def add_order(orders, order):
     """Dodaje zamówienie do kolekcji i zapisuje dane."""
     orders.append(order)
     save_orders(orders)
+
+
+def change_order_status(order, new_status):
+    """Zmienia status na jedną z wartości obsługiwanych przez podstawowy proces."""
+    normalized_status = new_status.strip().upper()
+    if normalized_status not in MANAGEABLE_ORDER_STATUSES:
+        raise ValueError("Niepoprawny status zamówienia.")
+    if order["status"] == "CANCELLED":
+        raise ValueError("Statusu zamówienia anulowanego nie można zmienić.")
+
+    order["status"] = normalized_status
 
 
 def sort_orders_by_date(orders, descending=True):
