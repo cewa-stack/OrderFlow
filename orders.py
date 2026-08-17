@@ -156,6 +156,10 @@ def format_order_details(order, customer, products):
 
 def display_order_list(orders, customers):
     """Wyświetla tabelę wszystkich zamówień."""
+    if not orders:
+        print("Brak zamówień do wyświetlenia.")
+        return
+
     customer_index = {customer["id"]: customer for customer in customers}
     print(f'{"ID":<10} {"DATA":<17} {"KLIENT":<25} {"STATUS":<12} {"WARTOŚĆ":>12}')
     print("-" * 82)
@@ -167,3 +171,45 @@ def display_order_list(orders, customers):
 def display_order_details(order, customer, products):
     """Wyświetla pełne informacje o zamówieniu."""
     print(format_order_details(order, customer, products))
+
+
+def build_order_report(orders):
+    """Oblicza podstawowe zestawienie liczby i wartości zamówień."""
+    status_counts = {status: 0 for status in KNOWN_ORDER_STATUSES}
+    status_values = {status: 0.0 for status in KNOWN_ORDER_STATUSES}
+
+    for order in orders:
+        status = order["status"]
+        if status not in status_counts:
+            status_counts[status] = 0
+            status_values[status] = 0.0
+        status_counts[status] += 1
+        status_values[status] += order["total"]
+
+    return {
+        "order_count": len(orders),
+        "total_value": round(sum(order["total"] for order in orders), 2),
+        "status_counts": status_counts,
+        "status_values": status_values,
+    }
+
+
+def format_order_report(report):
+    """Formatuje raport zamówień do wyświetlenia w konsoli."""
+    lines = [
+        f'Liczba zamówień: {report["order_count"]}',
+        f'Łączna wartość: {format_price(report["total_value"])}',
+        "",
+        f'{"STATUS":<15} {"LICZBA":>8} {"WARTOŚĆ":>16}',
+        "-" * 41,
+    ]
+
+    for status, count in report["status_counts"].items():
+        value = report["status_values"][status]
+        lines.append(f'{status:<15} {count:>8} {format_price(value):>16}')
+    return "\n".join(lines)
+
+
+def display_order_report(orders):
+    """Wyświetla podstawowy raport zamówień."""
+    print(format_order_report(build_order_report(orders)))

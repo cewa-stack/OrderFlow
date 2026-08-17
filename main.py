@@ -11,6 +11,7 @@ from orders import (
     create_order,
     display_order_details,
     display_order_list,
+    display_order_report,
     find_order_by_id,
     load_orders,
     save_orders,
@@ -26,22 +27,28 @@ from validation import is_valid_identifier, parse_positive_integer
 
 
 def show_menu():
-    print("=" * 40)
+    print("\n" + "=" * 44)
     print("              ORDERFLOW")
     print("       Order Management System")
-    print("=" * 40)
+    print("=" * 44)
     print("1. Lista zamówień")
     print("2. Wyszukaj zamówienie")
     print("3. Utwórz zamówienie")
     print("4. Zmień status zamówienia")
     print("5. Raport zamówień")
     print("0. Zakończ")
+    print("-" * 44)
+
+
+def show_section(title, width=74):
+    """Wyświetla spójny nagłówek sekcji."""
+    print(f"\n{title}")
+    print("=" * width)
 
 
 def handle_order_list():
     """Obsługuje wyświetlanie listy zamówień."""
-    print("\nLISTA ZAMÓWIEŃ")
-    print("=" * 82)
+    show_section("LISTA ZAMÓWIEŃ", 82)
     display_order_list(load_orders(), load_customers())
     print()
 
@@ -65,8 +72,7 @@ def handle_order_search():
         print("Zamówienie odwołuje się do nieistniejącego klienta.\n")
         return
 
-    print("\nSZCZEGÓŁY ZAMÓWIENIA")
-    print("=" * 74)
+    show_section("SZCZEGÓŁY ZAMÓWIENIA")
     display_order_details(order, customer, load_products())
     print()
 
@@ -137,8 +143,7 @@ def handle_order_creation():
     products = load_products()
     orders = load_orders()
 
-    print("\nNOWE ZAMÓWIENIE")
-    print("=" * 70)
+    show_section("NOWE ZAMÓWIENIE", 70)
     for customer in customers:
         print(f'{customer["id"]:<9} {get_customer_name(customer):<25} {customer["email"]}')
 
@@ -209,17 +214,29 @@ def handle_status_change():
     print(f'Status zamówienia {order["id"]} zmieniono na {new_status}.\n')
 
 
+def handle_order_report():
+    """Obsługuje wyświetlenie podsumowania zamówień."""
+    show_section("RAPORT ZAMÓWIEŃ", 50)
+    display_order_report(load_orders())
+    print()
+
+
 def main():
     actions = {
         "1": handle_order_list,
         "2": handle_order_search,
         "3": handle_order_creation,
         "4": handle_status_change,
+        "5": handle_order_report,
     }
 
     while True:
         show_menu()
-        choice = input("Wybierz opcję: ").strip()
+        try:
+            choice = input("Wybierz opcję: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\nZakończono pracę aplikacji.")
+            break
 
         if choice == "0":
             print("Do zobaczenia.")
