@@ -8,11 +8,11 @@ Zadanie: poznajcie aktualne zachowanie OrderFlow. Nie zmieniajcie kodu. Każdy w
 
 | Zespół | Data | Role (imiona i nazwiska studentów) |
 |---|---|---|
-| Łukasz Szymankiewicz (nr albumu 34562), INF 3-4 26_27Z | 25.10.2026 | Łukasz Szymankiewicz - wszystkie role (praca indywidualna) |
+| Łukasz Szymankiewicz (nr albumu 34562), INF 3-4 26_27Z | 25.10.2026 | Łukasz Szymankiewicz - praca indywidualna |
 
 ## Kontrola punktu startowego
 
-- [x] Pracujemy na tagu v1.0-student-base na własnej gałęzi - git switch -c feature/order-reporting v1.0-student-base (commit a980a81)
+- [x] Pracuję na tagu v1.0-student-base na własnej gałęzi - git switch -c feature/order-reporting v1.0-student-base (commit a980a81)
 - [x] git status nie pokazuje nieoczekiwanych zmian - working tree clean
 - [x] python -m pytest -q kończy się wynikiem 9 passed (tests/test_orders.py: 4, tests/test_validation.py: 5)
 - [x] python main.py wyświetla menu OrderFlow (opcje 1-5 oraz 0. Zakończ)
@@ -72,7 +72,7 @@ Strzałka oznacza "importuje / wywołuje". Zależności wynikają z instrukcji `
 
 ## Pierwszy wniosek
 
-**Najważniejsza rzecz, którą odkryliśmy o strukturze systemu:** System ma prosty układ warstwowy: main.py (konsola) -> moduły domenowe (orders, customers, products, validation) -> storage.py -> pliki data/*.json. Cała logika raportu znajduje się w orders.py (build_order_report + format_order_report) i zawsze działa na pełnej liście zamówień z load_orders() - nie ma żadnego filtrowania po dacie, więc raport okresowy da się dodać jako wybór zamówień przed obliczeniem raportu, bez zmiany warstwy danych.
+**Najważniejsza rzecz, którą odkryłem o strukturze systemu:** System ma prosty układ warstwowy: main.py (konsola) -> moduły domenowe (orders, customers, products, validation) -> storage.py -> pliki data/*.json. Cała logika raportu znajduje się w orders.py (build_order_report + format_order_report) i zawsze działa na pełnej liście zamówień z load_orders() - nie ma żadnego filtrowania po dacie, więc raport okresowy da się dodać jako wybór zamówień przed obliczeniem raportu, bez zmiany warstwy danych.
 
 ## Prześledzony przepływ danych
 
@@ -144,9 +144,9 @@ orders.py - wybór zamówień po created_at i raport okresowy (ponowne użycie b
 
 ## Gotowość do oddania karty
 
-- [x] Mamy co najmniej 5 pytań do Product Ownera
-- [x] Mamy 3 ryzyka lub niewiadome poparte obserwacjami (4 w tabeli)
-- [x] Każdy członek zespołu potrafi wyjaśnić wybrany przepływ (raport: main -> orders -> storage -> orders -> konsola)
+- [x] Mam co najmniej 5 pytań do Product Ownera
+- [x] Mam 3 ryzyka lub niewiadome poparte obserwacjami (4 w tabeli)
+- [x] Potrafię wyjaśnić wybrany przepływ (raport: main -> orders -> storage -> orders -> konsola)
 
 ## Exit tickets
 
@@ -156,27 +156,7 @@ orders.py - wybór zamówień po created_at i raport okresowy (ponowne użycie b
 
 Raport to build_order_report() na pełnej liście z load_orders(); sumuje zapisane pole total, więc zmiany cen katalogowych nie wpływają na historię, a raport okresowy wymaga tylko wybrania zamówień po created_at przed obliczeniem.
 
-**2. Jedna rzecz, o którą musimy zapytać Product Ownera:**
+**2. Jedna rzecz, o którą muszę zapytać Product Ownera:**
 
-Czy zamówienia CANCELLED wliczamy do głównej wartości raportu okresowego - od tej odpowiedzi zależy sposób liczenia najważniejszej liczby w raporcie.
-
-### Exit ticket numer 2
-
-**1. Jedna rzecz, którą rozumiem po analizie OrderFlow:**
-
-Nie dotyczy - praca indywidualna (zespół jednoosobowy).
-
-**2. Jedna rzecz, o którą musimy zapytać Product Ownera:**
-
-Nie dotyczy - praca indywidualna (zespół jednoosobowy).
-
-### Exit ticket numer 3
-
-**1. Jedna rzecz, którą rozumiem po analizie OrderFlow:**
-
-Nie dotyczy - praca indywidualna (zespół jednoosobowy).
-
-**2. Jedna rzecz, o którą musimy zapytać Product Ownera:**
-
-Nie dotyczy - praca indywidualna (zespół jednoosobowy).
+Czy zamówienia CANCELLED wliczać do głównej wartości raportu okresowego - od tej odpowiedzi zależy sposób liczenia najważniejszej liczby w raporcie.
 

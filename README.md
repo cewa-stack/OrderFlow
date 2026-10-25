@@ -83,8 +83,8 @@ OrderFlow/
 
 ## Dokumentacja sprintu
 
-Analiza systemu, analiza wymagania biznesowego „Rozszerzone raportowanie
-zamówień” oraz wynik refinementu z Product Ownerem znajdują się w katalogu
+Analiza systemu, analiza wymagania biznesowego "Rozszerzone raportowanie
+zamówień" oraz wynik refinementu z Product Ownerem znajdują się w katalogu
 [`docs/`](docs/README.md). Wypełnione pakiety zajęć (.docx) są w
 [`docs/pakiety/`](docs/pakiety/).
 

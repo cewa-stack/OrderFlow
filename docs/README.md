@@ -25,5 +25,5 @@ python main.py
 
 - Raport liczy `orders.build_order_report()` zawsze na pełnej liście zamówień - brak filtra po dacie.
 - Raport okresowy wybiera zamówienia po `created_at`; oba dni zakresu są włącznie.
-- `CANCELLED` nie wchodzą do wartości sprzedaży, ale są pokazane osobno.
+- `CANCELLED` nie wchodzą do wartości sprzedaży; są widoczne w podziale na statusy (wszystkie statusy, także z zerem).
 - System nie przechowuje historii statusów - raport pokazuje status bieżący.

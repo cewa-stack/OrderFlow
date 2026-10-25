@@ -10,7 +10,7 @@ Pracujcie na pełnym Business Requeście. Nie twórzcie jeszcze User Story, Acce
 
 | Zespół | Data | Role Studentów (imię i nazwisko) |
 |---|---|---|
-| Łukasz Szymankiewicz (nr albumu 34562), INF 3-4 26_27Z | 25.10.2026 | Moderator: Łukasz Szymankiewicz<br>Analityk: Łukasz Szymankiewicz<br>Sekretarz: Łukasz Szymankiewicz |
+| Łukasz Szymankiewicz (nr albumu 34562), INF 3-4 26_27Z | 25.10.2026 | Moderator, Analityk, Sekretarz: Łukasz Szymankiewicz |
 
 ## Problem i rezultat
 
@@ -28,9 +28,9 @@ Pracujcie na pełnym Business Requeście. Nie twórzcie jeszcze User Story, Acce
 
 ## Kontrola jakości
 
-- [x] Nie opisaliśmy jeszcze konkretnego ekranu ani rozwiązania technicznego
+- [x] Nie opisałem jeszcze konkretnego ekranu ani rozwiązania technicznego
 - [x] Każdy kluczowy fakt ma źródło w Business Requeście lub analizie OrderFlow
-- [x] Potrafimy wyjaśnić różnicę między problemem a proponowaną funkcją
+- [x] Potrafię wyjaśnić różnicę między problemem a proponowaną funkcją
 
 ## Stan obecny i docelowy
 
@@ -65,12 +65,12 @@ Podsumowanie: 6 faktów (F), 3 założenia (Z), 1 pytanie (P) w tablicy + 10 pyt
 
 | Nr | Pytanie do Product Ownera | Co zmieni odpowiedź | Priorytet |
 |---|---|---|---|
-| 1 | Czy zamówienia CANCELLED wliczamy do łącznej wartości okresu, czy pokazujemy je osobno (liczba i wartość anulowanych)? | Sposób liczenia głównej wartości raportu | Wysoki |
+| 1 | Czy zamówienia CANCELLED wliczać do łącznej wartości okresu, czy pokazywać je osobno (liczba i wartość anulowanych)? | Sposób liczenia głównej wartości raportu | Wysoki |
 | 2 | Czy data końcowa jest włącznie (do 23:59:59)? Czy raport dzienny to ta sama data początkowa i końcowa? | Które zamówienia z granic okresu wejdą do raportu | Wysoki |
-| 3 | Które statusy tworzą "wartość sprzedaży"? Czy liczymy też NEW (np. nieopłacone, pobranie przy odbiorze)? | Definicja głównej wartości; ewentualnie dwie różne wartości w raporcie | Wysoki |
-| 4 | Czy raport pokazuje status bieżący, czy z końca okresu? Czy akceptujemy, że ponowny raport za ten sam okres po zmianie statusów da inny podział? | Zakres zmiany - historia statusów oznaczałaby przebudowę modelu danych (poza zakresem wg pkt 15) | Wysoki |
+| 3 | Które statusy tworzą "wartość sprzedaży"? Czy liczyć też NEW (np. nieopłacone, pobranie przy odbiorze)? | Definicja głównej wartości; ewentualnie dwie różne wartości w raporcie | Wysoki |
+| 4 | Czy raport pokazuje status bieżący, czy z końca okresu? Czy akceptowalne jest, że ponowny raport za ten sam okres po zmianie statusów da inny podział? | Zakres zmiany - historia statusów oznaczałaby przebudowę modelu danych (poza zakresem wg pkt 15) | Wysoki |
 | 5 | Co zrobić z rekordem o brakującej/niepoprawnej dacie, statusie lub wartości: przerwać raport czy pominąć z ostrzeżeniem? | Zachowanie przy danych niespójnych (pkt 11) i treść komunikatu | Średni |
-| 6 | W jakim formacie wpisujemy daty? Czy potrzebne są skróty: dziś, wczoraj, bieżący tydzień/miesiąc? | Walidacja wejścia, komunikaty, zakres funkcji | Średni |
+| 6 | W jakim formacie wpisywać daty? Czy potrzebne są skróty: dziś, wczoraj, bieżący tydzień/miesiąc? | Walidacja wejścia, komunikaty, zakres funkcji | Średni |
 | 7 | Czy obowiązują ograniczenia zakresu: data w przyszłości, maksymalna długość okresu, daty sprzed uruchomienia systemu? | Reguły walidacji - granica między ochroną przed błędem a blokowaniem analiz historycznych (pkt 6) | Wysoki |
 | 8 | Czy w podziale pokazywać wszystkie 6 statusów (także z zerem), czy tylko występujące? | Format i czytelność wyniku | Niski |
 | 9 | Co musi zawierać nagłówek wyniku: okres, datę wygenerowania, liczbę dni? Czy pokazać ID policzonych zamówień? | Prezentacja i weryfikowalność wyniku (pkt 8, pkt 10) bez kopiowania listy zamówień (pkt 5) | Średni |
@@ -90,10 +90,10 @@ Test wpływu: czy odpowiedź zmienia sposób liczenia wyniku, zbiór zamówień 
 
 ## Gotowość zespołu
 
-- [x] Mamy co najmniej 10 pytań z opisanym wpływem
-- [x] Wybraliśmy 5 pytań, które mogą zmienić zakres lub wynik
-- [x] Nie pytamy o informacje, które dokument już podaje
-- [x] Potrafimy rozpocząć refinement bez prezentowania gotowego rozwiązania
+- [x] Mam co najmniej 10 pytań z opisanym wpływem
+- [x] Wybrałem 5 pytań, które mogą zmienić zakres lub wynik
+- [x] Nie pytam o informacje, które dokument już podaje
+- [x] Potrafię rozpocząć refinement bez prezentowania gotowego rozwiązania
 
 ## Exit tickets
 
@@ -106,24 +106,4 @@ Pytanie 4 (status bieżący czy z końca okresu): jeśli PO oczekuje statusów h
 **2. Jakie założenie było najłatwiej pomylić z faktem?**
 
 Że data końcowa jest włącznie do końca dnia - brzmi oczywiście, ale BR mówi tylko o "zwykłym rozumieniu zakresu dat", a created_at zawiera godzinę, więc to wymaga potwierdzenia.
-
-### Exit ticket numer 2
-
-**1. Które pytanie może najbardziej zmienić zakres funkcji i dlaczego?**
-
-Nie dotyczy - praca indywidualna (zespół jednoosobowy).
-
-**2. Jakie założenie było najłatwiej pomylić z faktem?**
-
-Nie dotyczy - praca indywidualna (zespół jednoosobowy).
-
-### Exit ticket numer 3
-
-**1. Które pytanie może najbardziej zmienić zakres funkcji i dlaczego?**
-
-Nie dotyczy - praca indywidualna (zespół jednoosobowy).
-
-**2. Jakie założenie było najłatwiej pomylić z faktem?**
-
-Nie dotyczy - praca indywidualna (zespół jednoosobowy).
 

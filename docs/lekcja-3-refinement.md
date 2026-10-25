@@ -2,55 +2,61 @@
 
 > Autor: Łukasz Szymankiewicz (34562), Grupa: INF 3-4 26_27Z, Data: 25.10.2026, Gałąź: `feature/order-reporting`
 
-> Praca indywidualna: rolę Product Ownera odgrywał autor na podstawie Business Requestu i dokumentacji biznesowej OrderFlow, zgodnie z podziałem ról z prezentacji do lekcji 3.
-
 ## Rejestr decyzji zespołu
 
-**Product Owner:** Łukasz Szymankiewicz, **Facylitator:** Łukasz Szymankiewicz, **Analityk:** Łukasz Szymankiewicz, **Sekretarz:** Łukasz Szymankiewicz
+**Product Owner:** Łukasz Szymankiewicz<br>
+**Facylitator, Analityk, Sekretarz:** Łukasz Szymankiewicz
 
 | Nr | Temat i pytanie | Odpowiedź PO | Potwierdzona reguła | Wpływ na zakres lub AC | Otwarte |
 |---|---|---|---|---|---|
-| 1 | Anulowane: czy CANCELLED wchodzą do łącznej wartości? | Nie wliczamy ich do wartości sprzedaży, ale raport ma pokazać, że powstały. | CANCELLED liczone w liczbie wszystkich zamówień i w podziale na statusy; wykluczone z wartości sprzedaży; osobno liczba i wartość anulowanych. | AC dla podsumowania: dwie wartości - sprzedaż (bez CANCELLED) i anulowane. | - |
+| 1 | Anulowane: czy CANCELLED wchodzą do łącznej wartości? | Nie są wliczane do wartości sprzedaży, ale raport ma pokazać, że powstały. | CANCELLED liczone w liczbie wszystkich zamówień i widoczne w podziale na statusy (liczba i wartość); wykluczone z wartości sprzedaży. | AC dla podsumowania: wartość sprzedaży bez CANCELLED; CANCELLED widoczne w podziale na statusy. | - |
 | 2 | Granice okresu: czy data końcowa jest włącznie? | Tak, oba dni włącznie, cały dzień kalendarzowy. | Okres = od 00:00:00 dnia początkowego do 23:59:59 dnia końcowego; ta sama data = raport dzienny. | AC dla granic (przypadek 5) i raportu dziennego (przypadek 1). | Strefa czasu - otwarte kwestie. |
-| 3 | Wartość sprzedaży: które statusy? | Wszystkie poza CANCELLED. NEW też liczymy, bo to złożone zamówienie; jedynym wyjątkiem jest anulowanie. | Wartość sprzedaży = suma total zamówień o statusach NEW, PAID, PROCESSING, SHIPPED, DELIVERED. | Definicja głównej liczby raportu i jej etykieta ("Wartość sprzedaży"). | - |
-| 4 | Status w raporcie: bieżący czy z końca okresu? | Bieżący; historia statusów nie jest potrzebna w tej zmianie. | Podział na statusy według statusu w chwili generowania; raport pokazuje datę i godzinę wygenerowania. | Historia statusów poza zakresem; AC: wynik powtarzalny przy niezmienionych danych. | - |
-| 5 | Niespójne dane: przerwać raport czy pominąć rekord? | Nie pokazywać wyniku, który tylko wygląda na poprawny. | Rekord z brakującą/niepoprawną datą, statusem lub wartością w danych -> raport nie powstaje; komunikat wskazuje ID zamówienia. | AC dla danych niespójnych (pkt 11); aplikacja nie może się zamknąć. | - |
-| 6 | Format daty i skróty okresów? | RRRR-MM-DD wystarczy; bez skrótów w tej zmianie. | Daty wpisywane jako RRRR-MM-DD; zły format, nieistniejąca data lub koniec przed początkiem -> komunikat z przykładem poprawnej wartości, brak raportu. | AC dla walidacji (przypadek 6); skróty okresów poza zakresem. | Ograniczenia zakresu - otwarte. |
+| 3 | Wartość sprzedaży: które statusy? | Wszystkie poza CANCELLED. NEW też się liczy, bo to złożone zamówienie; jedynym wyjątkiem jest anulowanie. | Wartość sprzedaży = suma total zamówień o statusach NEW, PAID, PROCESSING, SHIPPED, DELIVERED. | Definicja głównej liczby raportu i jej etykieta ("Wartość sprzedaży"). | - |
+| 4 | Status w raporcie: bieżący czy z końca okresu? | Bieżący; historia statusów nie jest potrzebna w tej zmianie. | Podział na statusy według bieżącego statusu zamówienia w chwili raportowania, bez historii zmian. | Historia statusów i raport statusu na wskazany dzień poza zakresem; AC: wynik powtarzalny przy niezmienionych danych. | - |
+| 5 | Niespójne dane: przerwać raport czy pominąć rekord? | Nie pokazywać wyniku, który tylko wygląda na poprawny. | Rekord z brakującą/niepoprawną datą, statusem lub wartością w danych -> raport nie powstaje, bez częściowego wyniku; komunikat wskazuje ID zamówienia. | AC dla danych niespójnych (pkt 11); aplikacja nie może się zamknąć. | - |
+| 6 | Format daty i skróty okresów? | RRRR-MM-DD wystarczy; bez skrótów w tej zmianie. | Dwie wymagane daty kalendarzowe RRRR-MM-DD; brak daty, zły format, nieistniejąca data lub koniec przed początkiem -> komunikat z przykładem poprawnej wartości, brak raportu. Bez dodatkowych limitów długości okresu. | AC dla walidacji (przypadek 6); skróty okresów poza zakresem. | - |
 | 7 | Obecny raport: zastąpić czy zostawić? | Zostawić bez zmian, raport okresowy jako osobna operacja. | Opcja "Raport zamówień" działa jak dotąd; raport okresowy to nowa, osobna operacja w menu. | AC regresji dla istniejących funkcji (pkt 12). | - |
+| 8 | Pusty okres: jak pokazać wynik? | To nie błąd, użytkownik ma dostać jasną informację. | Poprawny zakres bez zamówień -> czytelny wynik: 0 zamówień, wartość sprzedaży 0.00 zł, wszystkie statusy z zerem i informacja, że w okresie nie ma zamówień. | AC dla przypadku 3. | - |
+| 9 | Podział na statusy: wszystkie czy tylko występujące? | Wszystkie znane statusy, także z wynikiem zero. | Raport zawsze pokazuje 6 statusów (NEW, PAID, PROCESSING, SHIPPED, DELIVERED, CANCELLED) z liczbą i wartością, także gdy wynik to 0. | Stały układ wyniku; AC dla podziału na statusy. | - |
 
 ## Kontrola jakości zapisu
 
 - [x] Każda ważna odpowiedź została sparafrazowana
 - [x] PO potwierdził albo skorygował regułę
-- [x] Zapisaliśmy wpływ decyzji na zakres lub przyszłe AC
+- [x] Zapisałem wpływ decyzji na zakres lub przyszłe AC
 - [x] Każda niewiadoma ma właściciela i następny krok
 
 ## Podsumowanie zakresu
 
 ### W zakresie
 
-- Nowa operacja w menu: raport okresowy z datą początkową i końcową (RRRR-MM-DD, oba dni włącznie).
-- Walidacja zakresu: format, istniejąca data, data początkowa <= końcowa; czytelny komunikat, brak raportu przy błędzie.
-- Wybór zamówień po dacie utworzenia (created_at); każde zamówienie najwyżej raz.
-- Wynik: okres i data wygenerowania, liczba wszystkich zamówień, wartość sprzedaży (bez CANCELLED), liczba i wartość anulowanych, liczba i wartość dla każdego statusu.
-- Jednoznaczny komunikat dla okresu bez zamówień; obsługa niespójnych rekordów bez pozornie poprawnego wyniku.
-- Raport nie modyfikuje danych; dotychczasowe funkcje i obecny raport działają bez zmian.
+- Osobny raport okresowy uruchamiany z aplikacji konsolowej (nowa operacja w menu).
+- Dwie wymagane daty kalendarzowe w formacie RRRR-MM-DD.
+- Obustronnie domknięty zakres oparty na created_at (od 00:00:00 pierwszego dnia do 23:59:59 ostatniego).
+- Liczba wszystkich zamówień oraz wartość sprzedaży bez CANCELLED.
+- Liczba i wartość dla wszystkich znanych statusów, także z wynikiem zero.
+- Bieżący status zamówienia w chwili raportowania.
+- Czytelny wynik dla pustego okresu.
+- Odrzucenie błędnego zakresu i niespójnych danych bez częściowego raportu.
+- Zachowanie dotychczasowego raportu wszystkich zamówień; raport nie modyfikuje danych.
 
 ### Poza zakresem
 
-- Panel analityczny, wykresy, porównywanie wielu okresów, prognozy (BR pkt 15).
-- Integracje (BI, księgowość, płatności), wysyłka e-mail, eksport do pliku.
-- Historia statusów i przebudowa modelu danych, nowy system ról i uprawnień.
-- Skróty okresów (dziś, wczoraj, bieżący miesiąc) oraz filtrowanie po kliencie, produkcie, płatności lub dostawie.
+- Panel graficzny, wykresy, dashboard i porównanie wielu okresów.
+- Eksport do CSV, PDF albo automatyczna wysyłka.
+- Integracje z BI, księgowością i operatorem płatności.
+- Historia zmian statusu oraz raport statusu na wskazany dzień.
+- Przebudowa modelu danych, ról i uprawnień.
+- Prognozowanie sprzedaży i nowe miary analityczne.
 
 ## Otwarte kwestie
 
 | Kwestia | Dlaczego blokuje | Właściciel | Termin lub następny krok |
 |---|---|---|---|
-| Czy przy anulowanych pokazywać ich numery ID, żeby na odprawie dało się je szybko sprawdzić? | Zmienia zawartość wyniku i AC dla przypadku 4. | Product Owner | Decyzja przed lekcją 4 (User Story i AC) |
-| Ograniczenia zakresu: data w przyszłości, maksymalna długość okresu. | Bez reguły AC walidacji jest niejednoznaczne. | Product Owner | Decyzja przed lekcją 4 |
-| Strefa czasu: created_at bez strefy, czas lokalny komputera. | Może przesunąć zamówienia z okolic północy między dniami. | Zespół + PO | Potwierdzić: czas lokalny firmy (Europe/Warsaw) - przed AC |
-| Format liczb w wyniku (kropka "17333.50 zł" vs. polski "17 333,50 zł"). | Wpływa na czytelność wyniku na odprawach (pkt 10). | Product Owner | Pytanie na lekcji 4; domyślnie zostaje obecny format |
+| Strefa czasu dla created_at (zapis bez strefy, czas lokalny komputera). | Może przesunąć zamówienia z okolic północy między dniami. | Zespół techniczny | Ustalić przed AC dla granic okresu (lekcja 4) |
+| Sposób parsowania dat i rodzaje wyjątków. | Potrzebne do testów walidacji zakresu. | Zespół techniczny | Decyzja przy implementacji, po lekcji 4 |
+| Układ wyniku w konsoli, numer opcji menu i format kwot. | Wpływa na czytelność wyniku na odprawach (pkt 10). | Zespół techniczny | Projekt przy implementacji; obecny format kwot zostaje |
+| Struktura i liczba testów (dane testowe niezależne od data/orders.json). | Bez tego testy raportu mogą zależeć od danych demo. | Zespół techniczny | Ustalić razem z AC na lekcji 4 |
 
 ## Potwierdzenie PO
 
@@ -63,7 +69,7 @@ Korekta: Brak korekty.
 
 - Rola: kierownik operacyjny / pracownik obsługi zamówień.
 - Potrzeba: podsumowanie zamówień dla wskazanego okresu bez ręcznych obliczeń.
-- Reguły do AC: reguły 1-7 z rejestru decyzji.
+- Reguły do AC: reguły 1-9 z rejestru decyzji.
 - Przypadki do AC: 1 (dzień), 2 (kampania śr-wt), 3 (brak zamówień), 4 (anulowane), 5 (granice), 6 (zły zakres), 7 (miesiąc).
 - Przykład kontrolny z danych demo: maj 2026 (od 2026-05-01 do 2026-05-31) -> 12 zamówień, w tym 1 anulowane (ORD-0006, 388.00 zł); wartość sprzedaży 6114.50 zł; wartość wszystkich 6502.50 zł.
 
@@ -71,31 +77,11 @@ Korekta: Brak korekty.
 
 ### Exit ticket numer 1
 
-**1. Która odpowiedź Product Ownera najbardziej zmieniła wasze początkowe założenie i dlaczego?**
+**1. Która odpowiedź Product Ownera najbardziej zmieniła moje początkowe założenie i dlaczego?**
 
-Odpowiedź o CANCELLED: zakładałem jedną "łączną wartość" jak w obecnym raporcie, a raport potrzebuje dwóch wartości - sprzedaży bez anulowanych oraz osobno anulowanych - co zmienia sposób liczenia i wygląd wyniku.
-
-**2. Która reguła nadal wymaga doprecyzowania przed napisaniem Acceptance Criteria?**
-
-Ograniczenia zakresu dat (data w przyszłości, maksymalna długość okresu) oraz strefa czasu dla created_at - bez nich AC dla walidacji i granic dnia nie będą jednoznaczne.
-
-### Exit ticket numer 2
-
-**1. Która odpowiedź Product Ownera najbardziej zmieniła wasze początkowe założenie i dlaczego?**
-
-Nie dotyczy - praca indywidualna (zespół jednoosobowy).
+Odpowiedź o CANCELLED: zakładałem jedną "łączną wartość" jak w obecnym raporcie, a główną wartością jest wartość sprzedaży bez anulowanych; anulowane widać tylko w podziale na statusy, co zmienia sposób liczenia wyniku.
 
 **2. Która reguła nadal wymaga doprecyzowania przed napisaniem Acceptance Criteria?**
 
-Nie dotyczy - praca indywidualna (zespół jednoosobowy).
-
-### Exit ticket numer 3
-
-**1. Która odpowiedź Product Ownera najbardziej zmieniła wasze początkowe założenie i dlaczego?**
-
-Nie dotyczy - praca indywidualna (zespół jednoosobowy).
-
-**2. Która reguła nadal wymaga doprecyzowania przed napisaniem Acceptance Criteria?**
-
-Nie dotyczy - praca indywidualna (zespół jednoosobowy).
+Strefa czasu dla created_at i sposób parsowania dat - to decyzje zespołu technicznego, ale bez nich AC dla granic dnia nie będą w pełni jednoznaczne.
 
