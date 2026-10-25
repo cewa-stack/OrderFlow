@@ -81,6 +81,13 @@ OrderFlow/
 └── README.md
 ```
 
+## Dokumentacja sprintu
+
+Analiza systemu, analiza wymagania biznesowego „Rozszerzone raportowanie
+zamówień” oraz wynik refinementu z Product Ownerem znajdują się w katalogu
+[`docs/`](docs/README.md). Wypełnione pakiety zajęć (.docx) są w
+[`docs/pakiety/`](docs/pakiety/).
+
 ## Moduły i dane
 
 `main.py` jest punktem wejścia i odpowiada wyłącznie za przebieg operacji
