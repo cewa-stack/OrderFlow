@@ -1,8 +1,8 @@
-# Lekcja 2 — Analiza wymagania biznesowego
+# Lekcja 2 - Analiza wymagania biznesowego
 
 > Autor: Łukasz Szymankiewicz (34562) · Grupa: INF 3-4 26_27Z · Data: 25.10.2026 · Gałąź: `feature/order-reporting`
 
-Dokument wejściowy: *Business Request — Rozszerzone raportowanie zamówień* (wersja A).
+Dokument wejściowy: *Business Request - Rozszerzone raportowanie zamówień* (wersja A).
 
 ## Karta pracy zespołu
 
@@ -22,9 +22,9 @@ Pracujcie na pełnym Business Requeście. Nie twórzcie jeszcze User Story, Acce
 
 | Element | Odpowiedź zespołu | Dowód w dokumencie |
 |---|---|---|
-| Użytkownik | Kierownik operacyjny (główny odbiorca); z raportu korzystają też pracownicy obsługi zamówień. | BR – nagłówek „ODBIORCA”; §1 Kontekst biznesowy |
-| Sytuacja pracy | Krótkie odprawy (np. poranna – raport z poprzedniego dnia) oraz przygotowanie podsumowań dziennych, tygodniowych, miesięcznych i dla okresów kampanii dla osób od sprzedaży i realizacji. | §1, §6, §10; przypadki 1, 2 i 7 (§13) |
-| Decyzja wspierana raportem | Ocena skali i wartości sprzedaży w okresie oraz stanu realizacji zamówień (struktura statusów) – np. czy kampania przyniosła sprzedaż i czy zamówienia nie utknęły w realizacji. | §2, §3, §14 („ocenić skalę aktywności… strukturę… wartości istotne operacyjnie i sprzedażowo”) |
+| Użytkownik | Kierownik operacyjny (główny odbiorca); z raportu korzystają też pracownicy obsługi zamówień. | BR - nagłówek „ODBIORCA”; §1 Kontekst biznesowy |
+| Sytuacja pracy | Krótkie odprawy (np. poranna - raport z poprzedniego dnia) oraz przygotowanie podsumowań dziennych, tygodniowych, miesięcznych i dla okresów kampanii dla osób od sprzedaży i realizacji. | §1, §6, §10; przypadki 1, 2 i 7 (§13) |
+| Decyzja wspierana raportem | Ocena skali i wartości sprzedaży w okresie oraz stanu realizacji zamówień (struktura statusów) - np. czy kampania przyniosła sprzedaż i czy zamówienia nie utknęły w realizacji. | §2, §3, §14 („ocenić skalę aktywności… strukturę… wartości istotne operacyjnie i sprzedażowo”) |
 
 ## Kontrola jakości
 
@@ -37,7 +37,7 @@ Pracujcie na pełnym Business Requeście. Nie twórzcie jeszcze User Story, Acce
 | Krok | Stan obecny | Stan docelowy |
 |---|---|---|
 | 1 | Pracownik wybiera „5. Raport zamówień”. | Pracownik wybiera operację raportu okresowego. |
-| 2 | System liczy raport ze wszystkich zamówień – nie da się wskazać okresu. | Pracownik podaje datę początkową i końcową okresu. |
+| 2 | System liczy raport ze wszystkich zamówień - nie da się wskazać okresu. | Pracownik podaje datę początkową i końcową okresu. |
 | 3 | Pracownik przegląda listę zamówień i ręcznie wybiera te z interesujących go dat. | System sprawdza zakres; przy błędzie podaje powód i jak go poprawić. |
 | 4 | Ręcznie sumuje liczbę i wartości poza OrderFlow. | System wybiera zamówienia wg daty utworzenia i oblicza podsumowanie. |
 | 5 | Przygotowuje podsumowanie w niejednolitej formie; trudno sprawdzić, które zamówienia policzono. | Pracownik otrzymuje czytelny wynik z jawnym okresem albo informację „brak zamówień”; dane nie są zmieniane. |
@@ -68,10 +68,10 @@ Podsumowanie: 6 faktów (F), 3 założenia (Z), 1 pytanie (P) w tablicy + 10 pyt
 | 1 | Czy zamówienia CANCELLED wliczamy do łącznej wartości okresu, czy pokazujemy je osobno (liczba i wartość anulowanych)? | Sposób liczenia głównej wartości raportu | Wysoki |
 | 2 | Czy data końcowa jest włącznie (do 23:59:59)? Czy raport dzienny to ta sama data początkowa i końcowa? | Które zamówienia z granic okresu wejdą do raportu | Wysoki |
 | 3 | Które statusy tworzą „wartość sprzedaży”? Czy liczymy też NEW (np. nieopłacone, pobranie przy odbiorze)? | Definicja głównej wartości; ewentualnie dwie różne wartości w raporcie | Wysoki |
-| 4 | Czy raport pokazuje status bieżący, czy z końca okresu? Czy akceptujemy, że ponowny raport za ten sam okres po zmianie statusów da inny podział? | Zakres zmiany – historia statusów oznaczałaby przebudowę modelu danych (poza zakresem wg §15) | Wysoki |
+| 4 | Czy raport pokazuje status bieżący, czy z końca okresu? Czy akceptujemy, że ponowny raport za ten sam okres po zmianie statusów da inny podział? | Zakres zmiany - historia statusów oznaczałaby przebudowę modelu danych (poza zakresem wg §15) | Wysoki |
 | 5 | Co zrobić z rekordem o brakującej/niepoprawnej dacie, statusie lub wartości: przerwać raport czy pominąć z ostrzeżeniem? | Zachowanie przy danych niespójnych (§11) i treść komunikatu | Średni |
 | 6 | W jakim formacie wpisujemy daty? Czy potrzebne są skróty: dziś, wczoraj, bieżący tydzień/miesiąc? | Walidacja wejścia, komunikaty, zakres funkcji | Średni |
-| 7 | Czy obowiązują ograniczenia zakresu: data w przyszłości, maksymalna długość okresu, daty sprzed uruchomienia systemu? | Reguły walidacji – granica między ochroną przed błędem a blokowaniem analiz historycznych (§6) | Wysoki |
+| 7 | Czy obowiązują ograniczenia zakresu: data w przyszłości, maksymalna długość okresu, daty sprzed uruchomienia systemu? | Reguły walidacji - granica między ochroną przed błędem a blokowaniem analiz historycznych (§6) | Wysoki |
 | 8 | Czy w podziale pokazywać wszystkie 6 statusów (także z zerem), czy tylko występujące? | Format i czytelność wyniku | Niski |
 | 9 | Co musi zawierać nagłówek wyniku: okres, datę wygenerowania, liczbę dni? Czy pokazać ID policzonych zamówień? | Prezentacja i weryfikowalność wyniku (§8, §10) bez kopiowania listy zamówień (§5) | Średni |
 | 10 | Czy raport okresowy ma być osobną operacją obok obecnego raportu, czy go zastąpić (np. pusty zakres = całość)? | Wpływ na istniejącą funkcję (§12) i układ menu | Średni |
@@ -82,7 +82,7 @@ Test wpływu: czy odpowiedź zmienia sposób liczenia wyniku, zbiór zamówień 
 
 | Miejsce | Numer pytania | Uzasadnienie |
 |---|---|---|
-| 1 | 1 | Zmienia sposób liczenia głównej wartości – bez odpowiedzi nie da się napisać AC dla podsumowania. |
+| 1 | 1 | Zmienia sposób liczenia głównej wartości - bez odpowiedzi nie da się napisać AC dla podsumowania. |
 | 2 | 2 | Zmienia, które zamówienia z granic okresu wchodzą do raportu (przypadki 1, 2 i 5). |
 | 3 | 3 | Definiuje „wartość sprzedaży”; odbiorcy raportu rozumieją ją różnie (§7). |
 | 4 | 4 | Decyduje o zakresie: status bieżący vs. historia statusów (przebudowa modelu danych). |
@@ -101,29 +101,29 @@ Test wpływu: czy odpowiedź zmienia sposób liczenia wyniku, zbiór zamówień 
 
 **1. Które pytanie może najbardziej zmienić zakres funkcji i dlaczego?**
 
-Pytanie 4 (status bieżący czy z końca okresu): jeśli PO oczekuje statusów historycznych, trzeba by przechowywać historię zmian statusów, czyli przebudować model danych – coś, co BR w §15 wyłącza z zakresu.
+Pytanie 4 (status bieżący czy z końca okresu): jeśli PO oczekuje statusów historycznych, trzeba by przechowywać historię zmian statusów, czyli przebudować model danych - coś, co BR w §15 wyłącza z zakresu.
 
 **2. Jakie założenie było najłatwiej pomylić z faktem?**
 
-Że data końcowa jest włącznie do końca dnia – brzmi oczywiście, ale BR mówi tylko o „zwykłym rozumieniu zakresu dat”, a created_at zawiera godzinę, więc to wymaga potwierdzenia.
+Że data końcowa jest włącznie do końca dnia - brzmi oczywiście, ale BR mówi tylko o „zwykłym rozumieniu zakresu dat”, a created_at zawiera godzinę, więc to wymaga potwierdzenia.
 
 ### Exit ticket numer 2
 
 **1. Które pytanie może najbardziej zmienić zakres funkcji i dlaczego?**
 
-Nie dotyczy – praca indywidualna (zespół jednoosobowy).
+Nie dotyczy - praca indywidualna (zespół jednoosobowy).
 
 **2. Jakie założenie było najłatwiej pomylić z faktem?**
 
-Nie dotyczy – praca indywidualna (zespół jednoosobowy).
+Nie dotyczy - praca indywidualna (zespół jednoosobowy).
 
 ### Exit ticket numer 3
 
 **1. Które pytanie może najbardziej zmienić zakres funkcji i dlaczego?**
 
-Nie dotyczy – praca indywidualna (zespół jednoosobowy).
+Nie dotyczy - praca indywidualna (zespół jednoosobowy).
 
 **2. Jakie założenie było najłatwiej pomylić z faktem?**
 
-Nie dotyczy – praca indywidualna (zespół jednoosobowy).
+Nie dotyczy - praca indywidualna (zespół jednoosobowy).
 

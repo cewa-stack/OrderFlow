@@ -1,9 +1,9 @@
-# Dokumentacja sprintu — rozszerzone raportowanie zamówień
+# Dokumentacja sprintu - rozszerzone raportowanie zamówień
 
 > Autor: Łukasz Szymankiewicz (34562) · Grupa: INF 3-4 26_27Z · Data: 25.10.2026 · Gałąź: `feature/order-reporting`
 
-Dokumentacja laboratorium *Inżynieria programowania* (OrderFlow Sprint Workshop, lekcje 1–3).
-Zgodnie z instrukcją zajęć na tym etapie **kod aplikacji nie jest zmieniany** — powstaje analiza
+Dokumentacja laboratorium *Inżynieria programowania* (OrderFlow Sprint Workshop, lekcje 1-3).
+Zgodnie z instrukcją zajęć na tym etapie **kod aplikacji nie jest zmieniany** - powstaje analiza
 systemu, analiza wymagania biznesowego i wynik refinementu, które są wejściem do User Story
 i Acceptance Criteria.
 
@@ -23,7 +23,7 @@ python main.py
 
 ## Najważniejsze ustalenia
 
-- Raport liczy `orders.build_order_report()` zawsze na pełnej liście zamówień — brak filtra po dacie.
+- Raport liczy `orders.build_order_report()` zawsze na pełnej liście zamówień - brak filtra po dacie.
 - Raport okresowy wybiera zamówienia po `created_at`; oba dni zakresu włącznie (do potwierdzenia przez PO).
 - `CANCELLED` nie wchodzą do wartości sprzedaży, ale są pokazane osobno (do potwierdzenia przez PO).
-- System nie przechowuje historii statusów — raport pokazuje status bieżący.
+- System nie przechowuje historii statusów - raport pokazuje status bieżący.
